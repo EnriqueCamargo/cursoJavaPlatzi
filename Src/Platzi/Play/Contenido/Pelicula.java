@@ -24,6 +24,61 @@ public class Pelicula {
     public Pelicula() {
     }
 
+    public String getGenero() {
+        return Genero;
+    }
+
+    public void setGenero(String genero) {
+        Genero = genero;
+    }
+
+    public String getDescripcion() {
+        return Descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        Descripcion = descripcion;
+    }
+
+    public String getTitulo() {
+        return Titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        Titulo = titulo;
+    }
+
+    public int getDuracion() {
+        return Duracion;
+    }
+
+    public void setDuracion(int duracion) {
+        Duracion = duracion;
+    }
+
+    public int getAnioEstreno() {
+        return AnioEstreno;
+    }
+
+    public void setAnioEstreno(int anioEstreno) {
+        AnioEstreno = anioEstreno;
+    }
+
+    public double getCalificacion() {
+        return Calificacion;
+    }
+
+    public void setCalificacion(double calificacion) {
+        Calificacion = calificacion;
+    }
+
+    public Boolean getDisponible() {
+        return Disponible;
+    }
+
+    public void setDisponible(Boolean disponible) {
+        Disponible = disponible;
+    }
 
     public void reproducir(){
         System.out.println("Reproduciendo"+this.Titulo);
