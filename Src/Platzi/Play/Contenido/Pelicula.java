@@ -1,13 +1,29 @@
 package Platzi.Play.Contenido;
 
 public class Pelicula {
-    public String Titulo;
-    public String Descripcion;
-    public int Duracion;
-    public String Genero;
-    public int AnioEstreno;
-    public double Calificacion;
-    public Boolean Disponible;
+    private String Titulo;
+    private String Descripcion;
+    private int Duracion;
+    private String Genero;
+    private int AnioEstreno;
+    private double Calificacion;
+    private Boolean Disponible;
+
+    public Pelicula(String titulo,String Descripcion , int Duracion,  String Genero
+    ,int anioEstreno,double Calificacion,
+                    Boolean Disponible) {
+        this.Titulo = titulo;
+        this.Descripcion=Descripcion;
+        this.Duracion=Duracion;
+        this.Genero=Genero;
+        this.AnioEstreno=anioEstreno;
+        this.calificar(Calificacion);
+        this.Disponible=Disponible;
+    }
+
+    public Pelicula() {
+    }
+
 
     public void reproducir(){
         System.out.println("Reproduciendo"+this.Titulo);
