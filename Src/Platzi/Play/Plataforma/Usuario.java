@@ -7,7 +7,7 @@ public class Usuario {
     public String email;
 
     public void ver(Pelicula pelicula){
-        System.out.println(nombre);
+        System.out.print(nombre+" ");
         pelicula.reproducir();
     }
 }

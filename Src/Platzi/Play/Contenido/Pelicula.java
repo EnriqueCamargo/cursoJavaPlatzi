@@ -81,7 +81,7 @@ public class Pelicula {
     }
 
     public void reproducir(){
-        System.out.println("Reproduciendo"+this.Titulo);
+        System.out.println("Reproduciendo "+this.Titulo);
     }
     public String obtenerFichaTecnica(){
         return this.Titulo+"("+this.AnioEstreno+")\n"
