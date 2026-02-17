@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Plataforma {
     private String nombre;
-    private List<Pelicula> contenido;
+    private List<Pelicula> contenido;//agregacion
 
     public Plataforma(String nombre){
         this.nombre=nombre;
@@ -36,7 +36,7 @@ public class Plataforma {
     }
     public void mostrarTitulos(){
         for (Pelicula pelicula : contenido) {
-            System.out.println(pelicula.getTitulo());
+            System.out.println(pelicula);
         }
     }
     public void eliminar(Pelicula pelicula){
