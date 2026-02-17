@@ -36,11 +36,24 @@ public class Plataforma {
     }
     public void mostrarTitulos(){
         for (Pelicula pelicula : contenido) {
-            System.out.println(pelicula);
+            System.out.println(pelicula.getTitulo());
         }
     }
-    public void eliminar(Pelicula pelicula){
-        this.contenido.remove(pelicula);
-        System.out.println("Se elimino "+pelicula);
+    public void eliminar(String peliculaBuscada) {
+        boolean eliminado = contenido.removeIf(pelicula -> pelicula.getTitulo().equalsIgnoreCase(peliculaBuscada));
+
+        if (!eliminado) {
+            System.out.println("La película '" + peliculaBuscada + "' no está dentro del catálogo");
+        }else{
+            System.out.println(peliculaBuscada+ " Eliminada exitosamente");
+        }
+    }
+    public String buscarPorTitulo(String peliculaBuscada){
+        for (Pelicula pelicula : contenido) {
+            if(pelicula.getTitulo().equalsIgnoreCase(peliculaBuscada)){
+                return pelicula.obtenerFichaTecnica();
+            }
+        }
+        return "Pelicula no encontrada";
     }
 }
