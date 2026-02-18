@@ -35,9 +35,13 @@ public class Plataforma {
 
     }
     public void mostrarTitulos(){
-        for (Pelicula pelicula : contenido) {
+        /*for (Pelicula pelicula : contenido) {
             System.out.println(pelicula.getTitulo());
-        }
+        }*/
+        //LAMBDA
+
+        contenido.forEach(pelicula -> System.out.println(pelicula.getTitulo()));
+
     }
     public void eliminar(String peliculaBuscada) {
         boolean eliminado = contenido.removeIf(pelicula -> pelicula.getTitulo().equalsIgnoreCase(peliculaBuscada));
@@ -49,11 +53,20 @@ public class Plataforma {
         }
     }
     public String buscarPorTitulo(String peliculaBuscada){
+        /*
         for (Pelicula pelicula : contenido) {
+
             if(pelicula.getTitulo().equalsIgnoreCase(peliculaBuscada)){
                 return pelicula.obtenerFichaTecnica();
             }
-        }
-        return "Pelicula no encontrada";
+
+        }*/
+        //LAMBDA
+        contenido.stream().filter(pelicula ->pelicula.getTitulo().equalsIgnoreCase(peliculaBuscada))
+                .map(Pelicula::obtenerFichaTecnica).
+                findFirst().
+                orElse("Pelicula no encontrada");
+
+
     }
 }
