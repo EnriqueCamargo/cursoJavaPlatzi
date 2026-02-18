@@ -5,6 +5,7 @@ import Platzi.Play.Plataforma.Plataforma;
 import Platzi.Play.Plataforma.Usuario;
 import Platzi.Play.util.ScannerUtils;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class main{
@@ -14,12 +15,14 @@ public class main{
     public static final int MOSTRARTODO=2;
     public static final int BUSCARPORTITULO=3;
     public static final int ELIMINAR=4;
-    public static final int SALIR=5;
+    public static final int SALIR=6;
+    public static final int POPULARES=5;
 
     public static void main(String Args[]){
         Plataforma plataforma=new Plataforma("peliculas");
         System.out.println("Bienvenido a "+PLATAFORMA+" v"+VERSION);
-
+        plataforma.cargarCatalogo();
+        System.out.println("mas de "+plataforma.getDuracionTotal()+" minutos de duracion");
 
         Scanner scanner=new Scanner(System.in);
         String nombre= ScannerUtils.capturarTexto("Escriba su nombre");
@@ -33,8 +36,9 @@ public class main{
                         1-Agregar Contenido\n
                         2-Mostrar todo\n
                         3-buscar por titulo\n
-                        4-eliminar\n 
-                        5-salir\n
+                        4-eliminar\n
+                        5-Top peliculas mas populares\n 
+                        6-salir\n
                         """);
                 int x =ScannerUtils.capturarNumero(nombre +" Escoge una accion a realizar");
                 switch(x){
@@ -52,7 +56,13 @@ public class main{
                         plataforma.agregar(pelicula);
                     }
                     case MOSTRARTODO -> {
-                    plataforma.mostrarTitulos();
+                        List<String> titulos=plataforma.mostrarTitulos();
+                        //System.out.println(titulos);
+                        titulos.forEach(titulo -> System.out.println(titulo));
+                        //Exactamente lo mismo que hacer
+                        /*for (String titulo : titulos) {
+                            System.out.println(titulo);
+                        }*/
                     }
                     case BUSCARPORTITULO -> {
                         String buscarPelicula=ScannerUtils.capturarTexto("Escriba el titulo de la pelicula a buscar");
@@ -68,6 +78,24 @@ public class main{
                     case ELIMINAR -> {
                         String eliminarPelicula=ScannerUtils.capturarTexto("Escriba el titulo a eliminar");
                         plataforma.eliminar(eliminarPelicula);
+                    }
+                    case POPULARES -> {
+                        while (true) {
+                            int aux = ScannerUtils.capturarNumero("1-Mostrar Toda la lita \n2-Mostrar cierto numero de Peliculas");
+                            if (aux == 1) {
+                                List<Pelicula> topPopulares = plataforma.getTopMasPopulares();
+                                topPopulares.forEach(pelicula -> System.out.println(pelicula.obtenerFichaTecnica()));
+                                break;
+                            } else if (aux == 2) {
+                                int limit=ScannerUtils.capturarNumero("Escriba la cantidad de titulos a mostrar");
+                                List<Pelicula> topPopulares = plataforma.getTopMasPopularesByNum(limit);
+                                topPopulares.forEach(pelicula -> System.out.println(pelicula.obtenerFichaTecnica()));
+                                break;
+                            } else {
+                                System.out.println("Escriba un numero valido");
+                            }
+
+                        }
                     }
                     case SALIR -> {
                         System.exit(0);
