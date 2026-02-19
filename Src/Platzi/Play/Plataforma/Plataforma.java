@@ -99,4 +99,16 @@ public class Plataforma {
     public List<Pelicula> getTopMasPopularesByNum(int limite){
         return contenido.stream().sorted(Comparator.comparingDouble(Pelicula::getCalificacion).reversed()).limit(limite).toList();
     }
+
+    public List<Pelicula> getPeliculasBuenas(){
+        return contenido.stream().filter(pelicula -> pelicula.getCalificacion()>=4.0).toList();
+    }
+
+    public Pelicula getPeliculaMasLarga(){
+        return contenido.stream().sorted(Comparator.comparingInt(Pelicula::getDuracion).reversed()).findFirst().orElse(null);
+    }
+    public Pelicula getPeliculaMasCorta(){
+        return contenido.stream().sorted(Comparator.comparingInt(Pelicula::getDuracion)).findFirst().orElse(null);
+    }
+
 }
