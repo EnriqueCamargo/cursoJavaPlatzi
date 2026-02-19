@@ -1,5 +1,6 @@
 package Platzi.Play;
 
+import Platzi.Play.Contenido.Generos;
 import Platzi.Play.Contenido.Pelicula;
 import Platzi.Play.Plataforma.Plataforma;
 import Platzi.Play.Plataforma.Usuario;
@@ -15,9 +16,11 @@ public class main{
     public static final int MOSTRARTODO=2;
     public static final int BUSCARPORTITULO=3;
     public static final int ELIMINAR=4;
-    public static final int SALIR=6;
+    public static final int SALIR=9;
     public static final int POPULARES=5;
-
+    public static final int GENERO=6;
+    public static final int BUENAS=7;
+    public static final int DURACION=8;
     public static void main(String Args[]){
         Plataforma plataforma=new Plataforma("peliculas");
         System.out.println("Bienvenido a "+PLATAFORMA+" v"+VERSION);
@@ -30,15 +33,18 @@ public class main{
 
         int edad = ScannerUtils.capturarNumero("Escriba su edad");
         if(edad>=18){
-            System.out.println(nombre+" Eres apto para Acceder a nuestro servicio de Streaming");
+            System.out.println(nombre+" Eres apto para Acceder a nuestro servicio de Streaming\n\n");
             while(true) {
                 System.out.println("""
                         1-Agregar Contenido\n
                         2-Mostrar todo\n
                         3-buscar por titulo\n
                         4-eliminar\n
-                        5-Top peliculas mas populares\n 
-                        6-salir\n
+                        5-Top peliculas mas populares\n
+                        6-Buscar peliculas de cierto genero\n
+                        7-Ver Solo peliculas con buena calificacion\n
+                        8-Buscar Pelicula por duracion\n
+                        9-salir\n
                         """);
                 int x =ScannerUtils.capturarNumero(nombre +" Escoge una accion a realizar");
                 switch(x){
@@ -46,9 +52,9 @@ public class main{
                         String nombrePelicula=ScannerUtils.capturarTexto("Escriba el titulo de la pelicula a agregar");
                         String descripcionPelicula=ScannerUtils.capturarTexto("Escriba la descripcion de la pelicula");
                         int duracionPelicula=ScannerUtils.capturarNumero("Escriba la duracion de la pelicula en minutos");
-                        String generoPelicula=ScannerUtils.capturarTexto("Escribe el genero de la pelicula");
+                        Generos generoPelicula=ScannerUtils.capturarGenero("Escribe el genero de la pelicula");
                         int anioEstreno=ScannerUtils.capturarNumero("Escriba el anio en que se estreno la pelicula");
-                        double calificacionPelicula=ScannerUtils.capturarDecimal("Escriba la calificacion de la pelicula");
+                        double calificacionPelicula=ScannerUtils.capturarCalificacion("Escriba la calificacion de la pelicula");
 
                         Pelicula pelicula = new Pelicula(nombrePelicula,descripcionPelicula,
                                 duracionPelicula,generoPelicula,anioEstreno,
@@ -95,6 +101,32 @@ public class main{
                                 System.out.println("Escriba un numero valido");
                             }
 
+                        }
+                    }
+                    case GENERO -> {
+                        List<Pelicula> peliculasPorGenero=plataforma.getPeliculasPorGenero(ScannerUtils.capturarGenero("Escriba el genero a buscar"));
+                        peliculasPorGenero.forEach(pelicula -> System.out.println(pelicula.obtenerFichaTecnica()));
+                    }
+                    case BUENAS->{
+                        List<Pelicula> peliculasBuenas = plataforma.getPeliculasBuenas();
+                        peliculasBuenas.forEach(pelicula -> System.out.println(pelicula.obtenerFichaTecnica()));
+
+                    }
+                    case DURACION -> {
+                        while(true){
+
+                            int duracion=ScannerUtils.capturarNumero("Quieres ver la pelicula con mayor o menor duracion?\n1-Mayor\n2-Menor");
+                            if(duracion==1){
+                                Pelicula peliculaMaslarga =plataforma.getPeliculaMasLarga();
+                                System.out.println(peliculaMaslarga.obtenerFichaTecnica());
+                                break;
+                            }else if(duracion == 2){
+                                Pelicula peliculaMasCorta = plataforma.getPeliculaMasCorta();
+                                System.out.println(peliculaMasCorta.obtenerFichaTecnica());
+                                break;
+                            }else{
+                                System.out.println("Opcion invalida!!");
+                            }
                         }
                     }
                     case SALIR -> {

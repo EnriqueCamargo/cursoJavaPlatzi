@@ -4,12 +4,12 @@ public class Pelicula {
     private String Titulo;
     private String Descripcion;
     private int Duracion;
-    private String Genero;
+    private Generos Genero;
     private int AnioEstreno;
     private double Calificacion;
     private Boolean Disponible;
 
-    public Pelicula(String titulo,String Descripcion , int Duracion,  String Genero
+    public Pelicula(String titulo,String Descripcion , int Duracion,  Generos Genero
     ,int anioEstreno,double Calificacion,
                     Boolean Disponible) {
         this.Titulo = titulo;
@@ -24,11 +24,11 @@ public class Pelicula {
     public Pelicula() {
     }
 
-    public String getGenero() {
+    public Generos getGenero() {
         return Genero;
     }
 
-    public void setGenero(String genero) {
+    public void setGenero(Generos genero) {
         Genero = genero;
     }
 
@@ -87,7 +87,7 @@ public class Pelicula {
     public String obtenerFichaTecnica(){
         return this.Titulo+"("+this.AnioEstreno+")\n"
                 +"Genero "+this.Genero+"\n"+
-                " Calificacion: "+this.Calificacion+ "/5";
+                " Calificacion: "+this.Calificacion+ "/5"+ " Duracion: "+this.Duracion+"min";
     }
     public void calificar(double calificacion){
         if(calificacion>= 0 && calificacion<=5){

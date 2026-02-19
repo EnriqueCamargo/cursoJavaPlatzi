@@ -1,5 +1,7 @@
 package Platzi.Play.util;
 
+import Platzi.Play.Contenido.Generos;
+
 import java.util.Scanner;
 
 public class ScannerUtils {
@@ -28,6 +30,33 @@ public class ScannerUtils {
         double dato=scanner.nextDouble();
         scanner.nextLine();
         return dato;
+    }
+    public static Generos capturarGenero(String mensaje){
+        while(true){
+            System.out.println(mensaje +"... OPCIONES");
+            for (Generos genero : Generos.values()){
+                System.out.println("-" + genero.name());
+            }
+            String opcion=capturarTexto(mensaje);
+
+            try{
+                return Generos.valueOf(opcion.toUpperCase());
+            }catch (IllegalArgumentException e){
+                System.out.println("Dato Invalido ");
+            }
+        }
+    }
+    public static double capturarCalificacion(String mensaje){
+        while (true){
+            System.out.println(mensaje+": ");
+            double x = scanner.nextDouble();
+            if(x<=5.0 && x>=0){
+                return x;
+            }else{
+                System.out.println("Calificacion invalida, ingrese un numero no mayor a 5");
+            }
+        }
+
     }
 
 }
