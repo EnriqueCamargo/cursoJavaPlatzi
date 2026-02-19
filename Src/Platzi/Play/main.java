@@ -76,7 +76,7 @@ public class main{
                         if(plataforma.buscarPorTitulo(buscarPelicula)!=null){
                             System.out.println(peliculaEncontrada);
                         }else{
-                            System.out.println("Pelicula no encontrada con el titul "+buscarPelicula);
+                            System.out.println("Pelicula no encontrada con el titulo "+buscarPelicula);
                         }
 
 
