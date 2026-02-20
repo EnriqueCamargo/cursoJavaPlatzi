@@ -2,6 +2,7 @@ package Platzi.Play.Plataforma;
 
 import Platzi.Play.Contenido.Generos;
 import Platzi.Play.Contenido.Pelicula;
+import Platzi.Play.Exception.PeliculaExistenteException;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -33,6 +34,10 @@ public class Plataforma {
     }
 
     public void agregar(Pelicula elemento){
+
+        if (this.buscarPorTitulo(elemento.getTitulo())!=null){
+            throw new PeliculaExistenteException(elemento.getTitulo());
+        }
         this.contenido.add(elemento);
 
     }
@@ -82,7 +87,7 @@ public class Plataforma {
         return contenido.stream().filter(pelicula ->pelicula.getTitulo().equalsIgnoreCase(peliculaBuscada))
                 .map(Pelicula::obtenerFichaTecnica).
                 findFirst().
-                orElse("Pelicula no encontrada");
+                orElse(null);
 
 
     }

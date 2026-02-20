@@ -2,6 +2,7 @@ package Platzi.Play;
 
 import Platzi.Play.Contenido.Generos;
 import Platzi.Play.Contenido.Pelicula;
+import Platzi.Play.Exception.PeliculaExistenteException;
 import Platzi.Play.Plataforma.Plataforma;
 import Platzi.Play.Plataforma.Usuario;
 import Platzi.Play.util.ScannerUtils;
@@ -55,12 +56,16 @@ public class main{
                         Generos generoPelicula=ScannerUtils.capturarGenero("Escribe el genero de la pelicula");
                         int anioEstreno=ScannerUtils.capturarNumero("Escriba el anio en que se estreno la pelicula");
                         double calificacionPelicula=ScannerUtils.capturarCalificacion("Escriba la calificacion de la pelicula");
+                        try{
+                            Pelicula pelicula = new Pelicula(nombrePelicula,descripcionPelicula,
+                                    duracionPelicula,generoPelicula,anioEstreno,
+                                    calificacionPelicula,true);
+                            plataforma.agregar(pelicula);
 
-                        Pelicula pelicula = new Pelicula(nombrePelicula,descripcionPelicula,
-                                duracionPelicula,generoPelicula,anioEstreno,
-                                calificacionPelicula,true);
-                        plataforma.agregar(pelicula);
-                    }
+                        }catch (PeliculaExistenteException e){
+                            System.out.println(e.getMessage());
+                        }
+                        }
                     case MOSTRARTODO -> {
                         List<String> titulos=plataforma.mostrarTitulos();
                         //System.out.println(titulos);

@@ -1,6 +1,8 @@
 package Platzi.Play.util;
 
 import Platzi.Play.Contenido.Generos;
+import Platzi.Play.Exception.CalificacionInvalidaException;
+import Platzi.Play.Exception.GeneroInvalidoException;
 
 import java.util.Scanner;
 
@@ -42,7 +44,7 @@ public class ScannerUtils {
             try{
                 return Generos.valueOf(opcion.toUpperCase());
             }catch (IllegalArgumentException e){
-                System.out.println("Dato Invalido ");
+                System.out.println(new GeneroInvalidoException(opcion).getMessage());
             }
         }
     }
@@ -53,7 +55,7 @@ public class ScannerUtils {
             if(x<=5.0 && x>=0){
                 return x;
             }else{
-                System.out.println("Calificacion invalida, ingrese un numero no mayor a 5");
+                System.out.println(new CalificacionInvalidaException(x).getMessage());
             }
         }
 
