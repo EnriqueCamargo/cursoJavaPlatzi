@@ -2,6 +2,7 @@ package Platzi.Play;
 
 import Platzi.Play.Contenido.Generos;
 import Platzi.Play.Contenido.Pelicula;
+import Platzi.Play.Contenido.ResumenContenido;
 import Platzi.Play.Exception.PeliculaExistenteException;
 import Platzi.Play.Plataforma.Plataforma;
 import Platzi.Play.Plataforma.Usuario;
@@ -67,13 +68,11 @@ public class main{
                         }
                         }
                     case MOSTRARTODO -> {
-                        List<String> titulos=plataforma.mostrarTitulos();
-                        //System.out.println(titulos);
-                        titulos.forEach(titulo -> System.out.println(titulo));
-                        //Exactamente lo mismo que hacer
-                        /*for (String titulo : titulos) {
-                            System.out.println(titulo);
-                        }*/
+                        List<ResumenContenido> contenido=plataforma.getResumenes();
+
+                        contenido.forEach(r-> System.out.println(r.titulo()));
+                        contenido.forEach(r-> System.out.println(r.toString()));
+
                     }
                     case BUSCARPORTITULO -> {
                         String buscarPelicula=ScannerUtils.capturarTexto("Escriba el titulo de la pelicula a buscar");

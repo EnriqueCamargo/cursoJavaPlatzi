@@ -2,6 +2,7 @@ package Platzi.Play.Plataforma;
 
 import Platzi.Play.Contenido.Generos;
 import Platzi.Play.Contenido.Pelicula;
+import Platzi.Play.Contenido.ResumenContenido;
 import Platzi.Play.Exception.PeliculaExistenteException;
 
 import java.util.ArrayList;
@@ -115,5 +116,7 @@ public class Plataforma {
     public List<Pelicula> getPeliculasPorGenero(Generos genero){
         return  contenido.stream().filter(pelicula -> pelicula.getGenero()==genero).toList();
     }
-
+    public List<ResumenContenido> getResumenes(){
+        return contenido.stream().map(p -> new ResumenContenido(p.getTitulo(),p.getDuracion(),p.getGenero())).toList();
+    }
 }
