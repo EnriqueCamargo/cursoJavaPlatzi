@@ -18,11 +18,12 @@ public class main{
     public static final int MOSTRARTODO=2;
     public static final int BUSCARPORTITULO=3;
     public static final int ELIMINAR=4;
-    public static final int SALIR=9;
+    public static final int SALIR=10;
     public static final int POPULARES=5;
     public static final int GENERO=6;
     public static final int BUENAS=7;
     public static final int DURACION=8;
+    public static final int REPRODUCIR=9;
     public static void main(String Args[]){
         Plataforma plataforma=new Plataforma("peliculas");
         System.out.println("Bienvenido a "+PLATAFORMA+" v"+VERSION);
@@ -76,9 +77,9 @@ public class main{
                     }
                     case BUSCARPORTITULO -> {
                         String buscarPelicula=ScannerUtils.capturarTexto("Escriba el titulo de la pelicula a buscar");
-                        String peliculaEncontrada=plataforma.buscarPorTitulo(buscarPelicula);
+                        Pelicula peliculaEncontrada=plataforma.buscarPorTitulo(buscarPelicula);
                         if(plataforma.buscarPorTitulo(buscarPelicula)!=null){
-                            System.out.println(peliculaEncontrada);
+                            System.out.println(peliculaEncontrada.obtenerFichaTecnica());
                         }else{
                             System.out.println("Pelicula no encontrada con el titulo "+buscarPelicula);
                         }
@@ -131,6 +132,15 @@ public class main{
                             }else{
                                 System.out.println("Opcion invalida!!");
                             }
+                        }
+                    }
+                    case REPRODUCIR -> {
+                        String reproducir=ScannerUtils.capturarTexto("titulo de la pelicula a reproducir");
+                        Pelicula reproduccion=plataforma.buscarPorTitulo(reproducir);
+                        if(reproduccion!=null){
+                            plataforma.reproducir(reproduccion);
+                        }else{
+                            System.out.println("Pelicula no encontrada");
                         }
                     }
                     case SALIR -> {

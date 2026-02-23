@@ -5,17 +5,17 @@ import Platzi.Play.Contenido.Pelicula;
 import Platzi.Play.Contenido.ResumenContenido;
 import Platzi.Play.Exception.PeliculaExistenteException;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 public class Plataforma {
     private String nombre;
     private List<Pelicula> contenido;//agregacion
+    private Map<Pelicula, Integer> visualizaciones;
 
     public Plataforma(String nombre){
         this.nombre=nombre;
         this.contenido=new ArrayList<>();
+        this.visualizaciones= new HashMap<>();
     }
 
     public List<Pelicula> getContenido() {
@@ -41,6 +41,16 @@ public class Plataforma {
         }
         this.contenido.add(elemento);
 
+    }
+    public void reproducir(Pelicula pelicula){
+        int conteo=visualizaciones.getOrDefault(pelicula,0);
+        this.contarVisualizaciones(pelicula);
+        System.out.println(pelicula.getTitulo()+" ha sido reproducido "+conteo+" veces en total");
+        pelicula.reproducir();
+    }
+    private void contarVisualizaciones(Pelicula contenido){
+        int conteoActual =visualizaciones.getOrDefault(contenido,0);
+        visualizaciones.put(contenido,conteoActual +1);
     }
     public void cargarCatalogo(){
         List<Pelicula> catalogo = new ArrayList<>();
@@ -75,7 +85,7 @@ public class Plataforma {
             System.out.println(peliculaBuscada+ " Eliminada exitosamente");
         }
     }
-    public String buscarPorTitulo(String peliculaBuscada){
+    public Pelicula buscarPorTitulo(String peliculaBuscada){
         /*
         for (Pelicula pelicula : contenido) {
 
@@ -85,8 +95,7 @@ public class Plataforma {
 
         }*/
         //LAMBDA
-        return contenido.stream().filter(pelicula ->pelicula.getTitulo().equalsIgnoreCase(peliculaBuscada))
-                .map(Pelicula::obtenerFichaTecnica).
+        return contenido.stream().filter(pelicula ->pelicula.getTitulo().equalsIgnoreCase(peliculaBuscada)).
                 findFirst().
                 orElse(null);
 
