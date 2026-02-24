@@ -1,7 +1,5 @@
 package Platzi.Play;
 
-import Platzi.Play.Contenido.Pelicula;
-
 public class mainStackHeap {
     public static void main(){
 
