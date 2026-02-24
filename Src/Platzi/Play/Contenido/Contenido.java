@@ -1,6 +1,6 @@
 package Platzi.Play.Contenido;
 
-public class Contenido {
+public abstract class Contenido {
     private String Titulo;
     private String Descripcion;
     private int Duracion;
@@ -80,9 +80,7 @@ public class Contenido {
         Disponible = disponible;
     }
 
-    public void reproducir(){
-        System.out.println("Reproduciendo "+this.Titulo);
-    }
+    public abstract void reproducir();
 
     public String obtenerFichaTecnica(){
         return this.Titulo+"("+this.AnioEstreno+")\n"

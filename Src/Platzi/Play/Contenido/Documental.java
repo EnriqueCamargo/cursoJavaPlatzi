@@ -15,4 +15,8 @@ public class Documental extends Contenido{
     public void setNarrador(String narrador) {
         Narrador = narrador;
     }
+    @Override
+    public void reproducir(){
+        System.out.println("Reproduciendo el documental "+this.getTitulo()+" Narrado por: "+this.getNarrador());
+    }
 }

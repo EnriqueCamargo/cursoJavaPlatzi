@@ -2,6 +2,7 @@ package Platzi.Play.Plataforma;
 
 import Platzi.Play.Contenido.Generos;
 import Platzi.Play.Contenido.Contenido;
+import Platzi.Play.Contenido.Pelicula;
 import Platzi.Play.Contenido.ResumenContenido;
 import Platzi.Play.Exception.PeliculaExistenteException;
 
@@ -55,16 +56,16 @@ public class Plataforma {
     public void cargarCatalogo(){
         List<Contenido> catalogo = new ArrayList<>();
 
-        catalogo.add(new Contenido("Inception", "Un ladrón que roba secretos a través de los sueños.", 148, Generos.CIENCIA_FICCION, 2010, 4.8, true));
-        catalogo.add(new Contenido("The Godfather", "El patriarca de una dinastía del crimen organizado.", 175, Generos.DRAMA, 1972, 4.9, true));
-        catalogo.add(new Contenido("Toy Story", "Juguetes que cobran vida cuando los humanos no ven.", 81, Generos.ANIMACION, 1995, 4.5, true));
-        catalogo.add(new Contenido("The Dark Knight", "Batman se enfrenta al Joker en Gotham.", 152, Generos.ACCION, 2008, 4.9, true));
-        catalogo.add(new Contenido("Pulp Fiction", "Vidas de criminales y asesinos se entrelazan.", 154, Generos.CRIMEN, 1994, 4.7, false));
-        catalogo.add(new Contenido("Interstellar", "Un grupo de astronautas viaja a través de un agujero de gusano.", 169, Generos.CIENCIA_FICCION, 2014, 4.6, true));
-        catalogo.add(new Contenido("Jurassic Park", "Dinosaurios clonados escapan de un parque temático.", 127, Generos.AVENTURA, 1993, 4.4, true));
-        catalogo.add(new Contenido("Parasite", "Una familia pobre se infiltra en una casa rica.", 132, Generos.SUSPENSO, 2019, 4.8, false));
-        catalogo.add(new Contenido("Mad Max: Fury Road", "Persecución épica en un mundo post-apocalíptico.", 120, Generos.ACCION, 2015, 4.3, true));
-        catalogo.add(new Contenido("Spirited Away", "Una niña entra en un mundo mágico de dioses y espíritus.", 125, Generos.ANIMACION, 2001, 4.7, true));
+        catalogo.add(new Pelicula("Inception", "Un ladrón que roba secretos a través de los sueños.", 148, Generos.CIENCIA_FICCION, 2010, 4.8, true));
+        catalogo.add(new Pelicula("The Godfather", "El patriarca de una dinastía del crimen organizado.", 175, Generos.DRAMA, 1972, 4.9, true));
+        catalogo.add(new Pelicula("Toy Story", "Juguetes que cobran vida cuando los humanos no ven.", 81, Generos.ANIMACION, 1995, 4.5, true));
+        catalogo.add(new Pelicula("The Dark Knight", "Batman se enfrenta al Joker en Gotham.", 152, Generos.ACCION, 2008, 4.9, true));
+        catalogo.add(new Pelicula("Pulp Fiction", "Vidas de criminales y asesinos se entrelazan.", 154, Generos.CRIMEN, 1994, 4.7, false));
+        catalogo.add(new Pelicula("Interstellar", "Un grupo de astronautas viaja a través de un agujero de gusano.", 169, Generos.CIENCIA_FICCION, 2014, 4.6, true));
+        catalogo.add(new Pelicula("Jurassic Park", "Dinosaurios clonados escapan de un parque temático.", 127, Generos.AVENTURA, 1993, 4.4, true));
+        catalogo.add(new Pelicula("Parasite", "Una familia pobre se infiltra en una casa rica.", 132, Generos.SUSPENSO, 2019, 4.8, false));
+        catalogo.add(new Pelicula("Mad Max: Fury Road", "Persecución épica en un mundo post-apocalíptico.", 120, Generos.ACCION, 2015, 4.3, true));
+        catalogo.add(new Pelicula("Spirited Away", "Una niña entra en un mundo mágico de dioses y espíritus.", 125, Generos.ANIMACION, 2001, 4.7, true));
         this.contenido=catalogo;
     }
     public List<String >mostrarTitulos(){

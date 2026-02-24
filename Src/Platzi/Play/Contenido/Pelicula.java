@@ -8,5 +8,8 @@ public class Pelicula extends Contenido{
     public Pelicula(String titulo, String Descripcion, int Duracion, Generos Genero, int anioEstreno, double Calificacion, Boolean Disponible) {
         super(titulo, Descripcion, Duracion, Genero, anioEstreno, Calificacion, Disponible);
     }
-
+@Override
+    public void reproducir(){
+        System.out.println("Reproduciendo "+this.getTitulo());
+    }
 }

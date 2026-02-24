@@ -1,9 +1,6 @@
 package Platzi.Play;
 
-import Platzi.Play.Contenido.Documental;
-import Platzi.Play.Contenido.Generos;
-import Platzi.Play.Contenido.Contenido;
-import Platzi.Play.Contenido.ResumenContenido;
+import Platzi.Play.Contenido.*;
 import Platzi.Play.Exception.PeliculaExistenteException;
 import Platzi.Play.Plataforma.Plataforma;
 import Platzi.Play.util.ScannerUtils;
@@ -67,7 +64,7 @@ public class main{
                                 double calificacionPelicula=ScannerUtils.capturarCalificacion("Escriba la calificacion");
                                 try{
                                     if(tipoDeContenido==1){
-                                        Contenido pelicula = new Contenido(nombrePelicula,descripcionPelicula,
+                                        Contenido pelicula = new Pelicula(nombrePelicula,descripcionPelicula,
                                                 duracionPelicula,generoPelicula,anioEstreno,
                                                 calificacionPelicula,true);
                                         plataforma.agregar(pelicula);
